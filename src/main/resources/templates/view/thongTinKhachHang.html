@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+          integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Du lịch Việt Nam</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/styleMenu.css">
+    <link rel="stylesheet" href="css/animation.css">
+
+    <link rel="stylesheet" href="css/thongTinKhachHang.css">
+
+</head>
+
+<body>
+<div th:insert="view/layout/header.html:: header"> </div>
+<main class="map_Client">
+    <div class="container_Client">
+        <div class="sidebar_Client">
+            <div class="profile-header">
+                <img src="../images/anhDaiDien.png" alt="Profile Picture" id="profilePicture" onclick="triggerFileInput()"
+                     style="cursor: pointer;">
+                <input type="file" id="uploadPicture" accept="image/*" style="display: none;"
+                       onchange="previewImage(event)">
+
+                <div class="fullUser">
+                    <strong class="username">Mai Ngọc Bình</strong><br>
+                    <small class="nameForm">ID Khách Hàng: <span>5564654</span></small>
+                </div>
+            </div>
+            <div>
+                <ul>
+                    <li onclick="showForm('hoSoKhachHang', event)"><i class="fas fa-user-circle info_full"></i><a>Thông
+                        tin cá nhân</a></li>
+                    <li onclick="showForm('trangThaiTour', event)"><i class="fas fa-route info_full"></i><a>Lịch sử đặt
+                        tour</a></li>
+                    <li onclick="showForm('kHDoiMatKhau', event)"><i class="fas fa-key info_full"></i><a>Đổi mật
+                        khẩu</a></li>
+                    <li href="/dangNhap"><i class="fa-solid fa-arrow-right-from-bracket info_full"></i><a href="/dangNhap">Đăng xuất</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="content_Client">
+            <form id="infoForm" class="hoSoKhachHang active">
+                <h2>Thông Tin Cá Nhân</h2>
+                <div class="info-group">
+                    <label for="name">Tên Nguời Dùng:</label>
+                    <input type="text" id="name" value="binh123" disabled>
+                </div>
+                <div class="info-group">
+                    <label for="fullName">Họ và tên:</label>
+                    <input type="text" id="fullName" value="Mai Ngọc Bình" disabled>
+                </div>
+                <div class="info-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" value="nb22092300@gmail.com" disabled>
+                </div>
+                <div class="info-group">
+                    <label for="phone">Điện thoại:</label>
+                    <input type="tel" id="phone" value="0366167909" disabled>
+                </div>
+                <div class="info-group">
+                    <label for="id">CMND/CCCD:</label>
+                    <input type="text" id="id" value="123456789" disabled>
+                </div>
+                <div class="info-group">
+                    <label for="birthdate">Ngày sinh:</label>
+                    <input type="date" id="birthdate" value="2003-09-22" disabled>
+                </div>
+                <div class="info-group">
+                    <label for="gender">Giới tính:</label>
+                    <select id="gender" disabled>
+                        <option value="male">Nam</option>
+                        <option value="female">Nữ</option>
+                        <option value="other">Khác</option>
+                    </select>
+                </div>
+                <div class="info-group">
+                    <label for="address">Địa chỉ:</label>
+                    <input type="address" id="address" value="Đà nẵng" disabled>
+                </div>
+                <div class="info-group">
+                    <label for="createDate">Ngày tạo:</label>
+                    <input type="date" id="createDate" value="2003-09-22" disabled>
+                </div>
+                <div class="info-group">
+                    <label for="updateDate">Ngày cập nhật:</label>
+                    <input type="date" id="updateDate" value="2003-09-22" disabled>
+                </div>
+                <div class="button-container">
+                    <button type="button" class="edit-btn" onclick="enableEditing()">Chỉnh sửa</button>
+                    <button type="button" class="save-btn" onclick="saveChanges()" style="display: none;">Lưu</button>
+                </div>
+            </form>
+            <form class="trangThaiTour">
+                <h2>Lịch sử đặt tour</h2>
+                <table class="booking-table">
+                    <thead>
+                    <tr>
+                        <th>Mã Tour</th>
+                        <th>Ngày Đặt</th>
+                        <th>Thanh Toán</th>
+                        <th>Tổng Tiền</th>
+                        <th>Ngày Hủy</th>
+                        <th>Trạng Thái</th>
+                        <th>Hủy Tour</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>12345</td>
+                        <td>01/11/2024</td>
+                        <td>Hoàn tất</td>
+                        <td>5,000,000 VND</td>
+                        <td>N/A</td>
+                        <td>Đã Xác Nhận</td>
+                        <td><button type="button" class="cancel-btn">Hủy</button></td>
+                    </tr>
+                    <tr>
+                        <td>67890</td>
+                        <td>05/11/2024</td>
+                        <td>Chờ xử lý</td>
+                        <td>3,000,000 VND</td>
+                        <td>12/11/2024</td>
+                        <td>Đang chờ</td>
+                        <td><button type="button" class="cancel-btn">Hủy</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+
+            <form class="kHDoiMatKhau">
+                <h2>Đổi Mật Khẩu</h2>
+                <div class="info-group">
+                    <label for="current-password">Mật khẩu hiện tại</label>
+                    <input type="password" id="current-password" name="current-password" required>
+                </div>
+
+                <div class="info-group">
+                    <label for="new-password">Mật khẩu mới</label>
+                    <input type="password" id="new-password" name="new-password" required>
+                </div>
+
+                <div class="info-group">
+                    <label for="confirm-password">Xác nhận mật khẩu mới</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="reset-password">Thay Đổi Mật Khẩu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<div th:insert="view/layout/footer.html:: footer"> </div>
+<div th:insert="view/layout/footer.html:: .end-footer"> </div>
+<div th:insert="view/layout/footer.html:: #backTop"> </div>
+<script>
+    let isEditing = false; // Biến kiểm tra xem có đang ở chế độ chỉnh sửa hay không
+
+    function enableEditing() {
+        document.querySelectorAll('#infoForm input, #infoForm select').forEach(input => {
+            input.disabled = false;
+        });
+        document.querySelector('.edit-btn').style.display = 'none';
+        document.querySelector('.save-btn').style.display = 'inline-block';
+        isEditing = true; // Kích hoạt chế độ chỉnh sửa
+    }
+
+    function saveChanges() {
+        document.querySelectorAll('#infoForm input, #infoForm select').forEach(input => {
+            input.disabled = true;
+        });
+        document.querySelector('.edit-btn').style.display = 'inline-block';
+        document.querySelector('.save-btn').style.display = 'none';
+        isEditing = false; // Tắt chế độ chỉnh sửa
+        alert("Thông tin đã được lưu!");
+    }
+
+    function triggerFileInput() {
+        if (isEditing) { // Chỉ mở file khi ở chế độ chỉnh sửa
+            document.getElementById('uploadPicture').click();
+        }
+    }
+
+    function previewImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('profilePicture').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function showForm(formClass) {
+        // Ẩn tất cả các form
+        document.querySelectorAll('.content_Client form').forEach(form => {
+            form.classList.remove('active');
+        });
+        // Hiển thị form được chọn
+        document.querySelector('.' + formClass).classList.add('active');
+
+        // Xóa lớp "active" khỏi tất cả các mục trong thanh bên
+        document.querySelectorAll('.sidebar_Client ul li').forEach(li => {
+            li.classList.remove('active');
+        });
+
+        // Thêm lớp "active" vào mục thanh bên được nhấp
+        event.currentTarget.classList.add('active');
+    }
+</script>
+</body>
+
+</html>

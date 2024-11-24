@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<a th:href="@{|/tourDetail?tourId=${tour.tourId}|}" style="text-decoration: none" class="item-list-hotel" th:each="tour : ${toursale}">
+    <div class="sale-img">
+
+        <img th:src="@{/images/{imgPath}(imgPath=${tour.images})}">
+
+        <div class="sale">
+            <img src="images/sale.png" alt="">
+            <p>Giảm <Strong>[[${tour.sale}]]%</Strong></p>
+        </div>
+    </div>
+    <div class="inforHotel">
+        <h4>[[${tour.tourName}]]</h4>
+        <div class="timestay">
+            <div class="time">
+                <i class="bi bi-clock"></i>
+                <span>[[${tour.numberDay}]]</span>
+            </div>
+            <img src="images/5 sao.png" alt="">
+        </div>
+        <hr>
+        <div class="end-item">
+            <div class="address">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span>Đà Nẵng</span>
+            </div>
+            <div class="price">
+                <span class="old">[[${tour.price}]] <label>đ</label></span>
+                <span class="new">[[${tour.price-tour.price/100*tour.sale}]]<label> đ</label></span>
+            </div>
+
+        </div>
+    </div>
+</a>

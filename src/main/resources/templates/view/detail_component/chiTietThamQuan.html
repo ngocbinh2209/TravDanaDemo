@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Du lịch Việt Nam</title>
+    <link rel="stylesheet" href="../css/chiTietThamQuan.css">
+    <link rel="stylesheet" href="../css/styleMenu.css">
+
+</head>
+
+<body>
+<div th:insert="view/layout/header.html:: header"> </div>
+
+    <main th:object="${item}" th:each="site : ${item}">
+        <div class="container-main">
+            <h1 th:text="*{name}"></h1>
+            <div class="price-address">
+                <div class="address">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <label th:text="*{district}"></label>
+                </div>
+            </div>
+            <div class="img-details" th:each="image : *{images}">
+                <div class="img1">
+                    <img th:src="@{|../images/${image.imageUrl}|}" alt="">
+                </div>
+<!--                <div class="img2">-->
+<!--                    <img th:src="@{|../images/${image.imageUrl}|}" alt="">-->
+<!--                    <img th:src="@{|../images/${image.imageUrl}|}" alt="">-->
+<!--                </div>-->
+            </div>
+            <div class="thongTinKS">
+                <div class="infor">
+                    <h3>Tổng quan</h3>
+                    <div>
+                        <span th:if="${site.content != null}" th:text="${#strings.substring(site.content, 0, 500)} + '...'" id="short-content"></span>
+                        <span th:if="${site.content != null}" th:text="${site.content}" id="full-content" style="display:none;"></span>
+                        <p th:if="${site.content != null}" id="toggle-btn" onclick="toggleContent()">Xem thêm</p>
+                    </div>
+                </div>
+                <div class="map">
+                    <div class="address">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <label>Các Tour Liên Quan</label>
+                    </div>
+                    <div class="car" th:each="tour : ${tourList}">
+                        <img  th:src="@{|../images/${tour.images}|}" >
+                        <div class="card">
+                            <p class="card-header" th:utext="${tour.tourName}"> </p>
+                            <div class="card-body">
+                                <p>Giá :</p>
+                                <Strong th:utext="${tour.price}"> </Strong>
+                                <b>VND</b>
+                            </div>
+                            <br>
+                            <div class="card-footer">
+                                <ul class="dint">
+                                    <p> Khởi Hành :</p>
+                                    <p th:utext="${tour.startDate}"></p>
+                                </ul>
+                                <ul class="dint">
+                                    <p> Kết Thúc :</p>
+                                    <p th:utext="${tour.numberDay}"></p>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+<br>
+
+<div th:insert="view/layout/footer.html:: footer"> </div>
+
+</body>
+<script src="../js/index.js"></script>
+<script src="../js/chiTietThamQuan.js"></script>
+</html>

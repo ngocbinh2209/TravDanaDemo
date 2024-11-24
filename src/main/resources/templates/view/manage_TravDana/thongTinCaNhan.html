@@ -1,0 +1,74 @@
+<div id="table_all">
+    <div th:insert="view/manage_TravDana/Layout_Manage/breadcrumb.html:: div"> </div>
+    <div class="information">
+        <div class="account-management">
+            <div class="profile-header">
+                <!-- Ảnh đại diện -->
+<!--                <img src="manage_TravDana/assets/img/anhDaiDien.png" alt="Profile Picture" id="profilePicture" onclick="triggerFileInput()" style="cursor: pointer;">-->
+<!--                <input type="file" id="uploadPicture" accept="image/*" style="display: none;" onchange="previewImage(event)">-->
+
+                <div>
+                    <strong id="username" th:text="${fullName}">Mai Ngọc Bình</strong><br>
+                    <small>ID Tài Khoản: <span id="accountID" th:text="${userId}">350885710009534</span></small>
+                </div>
+            </div>
+
+            <!-- Tên đầy đủ -->
+            <div class="input-group">
+                <label for="fullname">Tên đầy đủ</label>
+                <input type="text" id="fullname" th:value="${fullName}" disabled> <!-- sửa: hiển thị tên đúng từ controller -->
+            </div>
+
+            <!-- Số điện thoại -->
+            <div class="input-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="text" id="phone" th:value="${phone}" disabled> <!-- sửa: hiển thị số điện thoại đúng từ controller -->
+            </div>
+
+            <!-- Email -->
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" th:value="${email}" disabled> <!-- sửa: hiển thị email đúng từ controller -->
+            </div>
+
+            <!-- Địa chỉ (thêm trường mới trong controller nếu có) -->
+            <div class="input-group">
+                <label for="address">Địa chỉ</label>
+                <input type="text" id="address" th:value="${address}" disabled> <!-- sửa: đảm bảo có giá trị address trong controller -->
+            </div>
+
+            <!-- Quốc tịch -->
+            <div class="input-group">
+                <label for="nationality">Quốc tịch</label>
+                <input type="text" id="nationality" th:value="${nationality}" disabled> <!-- sửa: kiểm tra trường quốc tịch -->
+            </div>
+
+            <!-- Ngày sinh -->
+            <div class="input-group">
+                <label for="birthdate">Ngày sinh</label>
+                <input type="date" id="birthdate" th:value="${birthday}" disabled> <!-- sửa: ngày sinh, kiểm tra định dạng đúng -->
+            </div>
+
+            <!-- Giới tính -->
+            <div class="input-group">
+                <label for="gender">Giới tính</label>
+                <select id="gender" disabled>
+                    <option value="male" th:selected="${gender == 'Nam'}">Nam</option>
+                    <option value="female" th:selected="${gender == 'Nữ'}">Nữ</option>
+                </select> <!-- sửa: đảm bảo giới tính được truyền đúng từ controller -->
+            </div>
+
+            <!-- Ngày tạo -->
+            <div class="input-group">
+                <label for="createdDate">Ngày tạo</label>
+                <input type="date" id="createdDate" th:value="${createdAt}" disabled> <!-- sửa: kiểm tra ngày tạo, định dạng ngày đúng -->
+            </div>
+
+            <!-- Các nút hành động -->
+            <div class="actions">
+                <button class="edit-btn" onclick="enableEditing()">Chỉnh sửa</button>
+                <button class="save-btn" onclick="saveChanges()">Lưu thay đổi</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập Hệ Thống Manage</title>
+<!--    <link rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('images/nenLoginAdmin.png') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-all {
+            background-color: white;
+            display: flex;
+            width: 800px;
+            height: 400px;
+            border-radius: 23px;
+            padding-left: 20px;
+        }
+
+        .login-image {
+            width: 350px;
+            justify-content: center;
+            display: flex;
+        }
+
+        .login-image img {
+            width: 100%;
+        }
+
+        .login-box {
+            padding: 20px 40px;
+            text-align: center;
+            width: 460px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 10px 10px 35px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .input-group .toggle-password {
+            position: absolute;
+            left: 330px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0px;
+            background-color: #FFC107;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #FFB300;
+        }
+
+        .forgot-password {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .forgot_register {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .footer-text {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+            width: 100%;
+        }
+
+        a.color_a{
+            color: #4b96b8;
+            text-decoration: none;
+        }
+
+        .forgot-box {
+            padding: 20px 40px;
+            width: 460px;
+            margin-top: 10px;
+        }
+
+        .forgot-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .login-password {
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+            padding-left: 290px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-all">
+        <!-- Hình ảnh ở phía trên -->
+        <div class="login-image">
+            <img src="manage_TravDana/assets/img/imageLogin.png" alt="Login Image">
+        </div>
+
+        <!-- Form đăng nhập -->
+        <div class="login-box">
+            <h2>ĐĂNG NHẬP</h2>
+            <form th:action="@{/checkLogin}" th:method="post" th:object="${userRequest}">
+                <h2>[(${message})]</h2>
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" th:field="*{userName}" placeholder="Tài khoản quản trị" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-key"></i>
+                    <input type="password" th:field="*{password}" id="password" placeholder="Mật khẩu" required>
+                    <i class="fa-solid fa-eye-slash toggle-password" onclick="togglePassword('password')"></i>
+                </div>
+                <button type="submit" class="login-button">Đăng nhập</button>
+            </form>
+            <span><a href="#" class="forgot-password color_a">Bạn quên mật khẩu?</a></span>
+            <span class="forgot_register">Bạn chưa có tài khoản? <a class="color_a" href="dangKi" >Đăng kí</a></span>
+            <span class="footer-text">Phần mềm quản lý Tour ©2024 <a class="color_a" href="/">TravDana</a></span>
+        </div>
+<!--            <a>Đăng kí</a>-->
+
+        <div class="forgot-box" style="display: none;">
+            <h2>QUÊN MẬT KHẨU</h2>
+            <form action="#" method="post">
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" placeholder="Tên người dùng đã đăng ký" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-id-card"></i>
+                    <input type="text" placeholder="CCCD" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-key"></i>
+                    <input type="password" id="new-password" placeholder="Nhập mật khẩu mới" required>
+                    <i class="fa-solid fa-eye-slash toggle-password" onclick="togglePassword('new-password')"></i>
+                </div>
+                <button type="submit" class="login-button">Lấy lại mật khẩu</button>
+            </form>
+            <a href="#" class="login-password color_a">Đăng Nhập</a>
+        </div>
+    </div>
+
+    <script>
+        // Hàm ẩn và hiện các box
+        document.querySelector('.forgot-password').addEventListener('click', function (event) {
+            event.preventDefault(); // Ngăn chặn hành động mặc định
+            document.querySelector('.login-box').style.display = 'none';
+            document.querySelector('.forgot-box').style.display = 'block';
+        });
+
+        document.querySelector('.login-password').addEventListener('click', function (event) {
+            event.preventDefault(); // Ngăn chặn hành động mặc định
+            document.querySelector('.login-box').style.display = 'block';
+            document.querySelector('.forgot-box').style.display = 'none';
+        });
+
+        // Hàm ẩn hiện mật khẩu
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const toggleIcon = passwordInput.nextElementSibling;
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            } else {
+                passwordInput.type = "password";
+                toggleIcon.classList.add("fa-eye-slash");
+                toggleIcon.classList.remove("fa-eye");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

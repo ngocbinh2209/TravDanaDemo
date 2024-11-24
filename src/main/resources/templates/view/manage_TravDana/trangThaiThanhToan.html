@@ -1,0 +1,117 @@
+<div id="table_all">
+    <div th:insert="view/manage_TravDana/Layout_Manage/breadcrumb.html:: div"> </div>
+    <div>
+    </div>
+    <div class="information">
+        <div class="account-management">
+            <h1 class="h1_status">Trạng Thái Thanh Toán Tour</h1>
+
+            <div class="search-container_status">
+                <form action="" method="get">
+                    <label for="searchInput_status">Nhập ID Tour:</label>
+                    <input type="text" id="searchInput_status" name="tourId" placeholder="Nhập ID Tour để tìm kiếm">
+                    <button type="submit" class="button_status">Tìm kiếm</button>
+                </form>
+            </div>
+
+            <div class="tour-list_status">
+                <h2>Danh sách Tour</h2>
+                <table class="table_status">
+                    <thead>
+                    <tr>
+                        <th class="th_status">ID Tour</th>
+                        <th class="th_status">Tên Tour</th>
+                        <th class="th_status">Ngày Bắt đầu</th>
+                        <th class="th_status">Ngày Kết Thúc</th>
+                        <th class="th_status">Giá</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="td_status">Tour 1</td>
+                        <td class="td_status">Tour Name 1</td>
+                        <td class="td_status">2024-01-01</td>
+                        <td class="td_status">500000 VND</td>
+                        <td class="td_status">500000 VND</td>
+                    </tr>
+                    <tr>
+                        <td class="td_status">Tour 2</td>
+                        <td class="td_status">Tour Name 2</td>
+                        <td class="td_status">2024-02-01</td>
+                        <td class="td_status">700000 VND</td>
+                        <td class="td_status">700000 VND</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p class="message_status" style="color: red; text-align: center;">
+                    Không tìm thấy Tour với ID được cung cấp.
+                </p>
+            </div>
+
+            <div class="tour-details_status">
+                <h3 class="h3_status">Trạng Thái Thanh Toán</h3>
+                <table class="table_status">
+                    <thead>
+                    <tr>
+                        <th class="th_status">Tên Người Dùng</th>
+                        <th class="th_status">CCCD</th>
+                        <th class="th_status">Tổng Giá</th>
+                        <th class="th_status">Đã Thanh Toán</th>
+                        <th class="th_status">Trạng Thái</th>
+                        <th class="th_status">Ngày Thanh Toán</th>
+                        <th class="th_status">Hành động</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="td_status">User 1</td>
+                        <td class="td_status">123456789</td>
+                        <td class="td_status">500000 VND</td>
+                        <td class="td_status">500000 VND</td>
+                        <td class="td_status">
+                            <select class="select_status" name="status">
+                                <option class="option_status" value="Đã cọc">Đã cọc</option>
+                                <option class="option_status" value="Đã thanh toán">Đã thanh toán</option>
+                                <option class="option_status" value="Đang xử lý">Đang xử lý</option>
+                            </select>
+                        </td>
+                        <td class="td_status">
+                            <input class="input_status" type="date" name="paymentDate" value="2024-01-01" />
+                        </td>
+                        <td class="td_status">
+                            <form action="/payments/1/update" method="post">
+                                <input type="hidden" name="selectedTour" value="Tour1">
+                                <input type="hidden" name="edit" value="true" />
+                                <button class="button_status" type="submit">Cập nhật</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_status">User 2</td>
+                        <td class="td_status">987654321</td>
+                        <td class="td_status">700000 VND</td>
+                        <td class="td_status">700000 VND</td>
+                        <td class="td_status">
+                            <select class="select_status" name="status">
+                                <option class="option_status" value="Đã cọc">Đã cọc</option>
+                                <option class="option_status" value="Đã thanh toán">Đã thanh toán</option>
+                                <option class="option_status" value="Đang xử lý">Đang xử lý</option>
+                            </select>
+                        </td>
+                        <td class="td_status">
+                            <input class="input_status" type="date" name="paymentDate" value="2024-02-01" />
+                        </td>
+                        <td class="td_status">
+                            <form action="" method="post">
+                                <input type="hidden" name="selectedTour" value="Tour2">
+                                <input type="hidden" name="edit" value="true" />
+                                <button class="button_status" type="submit">Cập nhật</button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<div id="table_all">
+    <div class="table-responsive">
+        <div th:insert="view/manage_TravDana/Layout_Manage/breadcrumb.html:: div"> </div>
+        <div class="content_sta">
+            <div class="content_sta_um sta_1">
+                <div class="sta_one">
+                    <div>
+                        <span>Tổng Số Nhân Viên</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-clipboard-user"></i>
+                        <span>100 Người</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content_sta_um sta_2">
+                <div class="sta_two">
+                    <div>
+                        <span>Tổng Số Nhân Viên:</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-clipboard-user"></i>
+                        <span>100 Người</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content_sta_um sta_3">
+                <div class="sta_three">
+                    <div>
+                        <span>Tổng Số Nhân Viên</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-clipboard-user"></i>
+                        <span>100 Người</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content_sta_um sta_4">
+                <div class="sta_four">
+                    <div>
+                        <span>Tổng Số Nhân Viên</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-clipboard-user"></i>
+                        <span>100 Người</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-all">
+            <div class="card">
+                <div class="card-body">
+                    <table id="table" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã Tour</th>
+                                <th>Mã Địa Điểm</th>
+                                <th>Thời Gian Bắt Đầu</th>
+                                <th>Thời Gian Kết Thúc</th>
+                                <th>Ngày Thứ</th>
+                                <th>Chỉnh Sửa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="LS : ${LCV}">
+                                <td th:utext="${LS.id}"></td>
+                                <td th:utext="${LS.tour.tourId}"></td>
+                                <td th:utext="${LS.site.name}"></td>
+                                <td th:utext="${LS.startTime}"></td>
+                                <td th:utext="${LS.endTime}"></td>
+                                <td></td>
+                                <td>
+                                    <a href="#"><i class="fa-solid fa-user-pen"></i></a>
+                                    <a href=""><i class="fa-solid fa-user-lock"></i></a>
+                                    <a href="#"><i class="fa-solid fa-trash-can"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

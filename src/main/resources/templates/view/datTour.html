@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+          integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Du lịch Việt Nam</title>
+    <link rel="stylesheet" href="/css/datTour.css">
+    <link rel="stylesheet" href="/css/styleMenu.css">
+
+    <style>
+        body {
+            background-image: url(/images/bannar-ss2.jpg);
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+<div th:insert="view/layout/header.html:: header"> </div>
+<main class="map">
+    <div class="container-tour">
+        <div class="left-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="img-fluid rounded img-tour" th:src="@{/images/{imgPath}(imgPath=${tour.images})}">
+
+                </div>
+                <div class="col-md-5">
+                    <h2 class="text-warning">
+                        [[${tour.tourName}]]
+                    </h2>
+                    <ul class="list-unstyled">
+                        <li><strong>Mã tour: </strong> [[${tour.tourId}]]</li>
+                        <li><strong>Thời gian: </strong> [[${tour.numberDay}]]</li>
+                        <li><strong>Giá: </strong> <span>[[${tour.price}]]</span> đ</li>
+                        <li><strong>Giá trẻ em: </strong> <span>[[${tour.childPrice}]]</span> đ</li>
+                        <li><strong>Ngày khởi hành: </strong>[[${tour.startDate}]]</li>
+                        <li><strong>Số chỗ còn nhận: </strong> Không giới hạn</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="description">
+                <p>Một sự thanh thản tuyệt vời đã chiếm hữu toàn bộ tâm hồn tôi,
+                    giống như những buổi sáng ngọt ngào của mùa xuân mà tôi tận hưởng bằng cả trái tim mình.
+                    Tôi cô đơn, và cảm thấy sự quyến rũ của sự tồn tại ở nơi này, nơi được tạo ra cho hạnh phúc của
+                    những tâm hồn như tôi.
+                    Tôi rất hạnh phúc, bạn thân mến của tôi, quá đắm chìm trong cảm giác tinh tế của sự tồn tại yên
+                    bình,
+                    đến nỗi tôi bỏ bê tài năng của mình.
+
+                    Lorem Ipsum quyết định rời đi đến Thế giới Ngữ pháp xa xôi.
+                    Oxmox Lớn khuyên cô không nên làm như vậy,
+                    vì có hàng ngàn Dấu phẩy hoang dã xấu xa và Dấu chấm phẩy gian xảo,
+                    nhưng Văn bản Mù Nhỏ không nghe. Cô đóng gói bảy versalia của mình,
+                    đặt chữ cái đầu của mình vào thắt lưng và tự mình lên đường.
+                    Khi cô đến những ngọn đồi đầu tiên... (nội dung mô tả tiếp tục)</p>
+            </div>
+            <h3>Chi tiết</h3>
+            <ul>
+                <li>Địa điểm khởi hành và trở về: Sân bay quốc tế John FK</li>
+                <li>Thời gian khởi hành: 3 giờ trước giờ bay</li>
+                <li>Phòng ngủ: 4 phòng</li>
+                <li>Phòng tắm: 6 phòng</li>
+                <li>Giá bao gồm: Vé máy bay, 3 đêm nghỉ tại khách sạn, hướng dẫn viên du lịch,...</li>
+            </ul>
+
+            <ul>
+                <li>Địa điểm khởi hành và trở về: Sân bay quốc tế John FK</li>
+                <li>Thời gian khởi hành: 3 giờ trước giờ bay</li>
+                <li>Phòng ngủ: 4 phòng</li>
+                <li>Phòng tắm: 6 phòng</li>
+                <li>Giá bao gồm: Vé máy bay, 3 đêm nghỉ tại khách sạn, hướng dẫn viên du lịch,...</li>
+            </ul>
+
+            <ul>
+                <li>Địa điểm khởi hành và trở về: Sân bay quốc tế John FK</li>
+                <li>Thời gian khởi hành: 3 giờ trước giờ bay</li>
+                <li>Phòng ngủ: 4 phòng</li>
+                <li>Phòng tắm: 6 phòng</li>
+                <li>Giá bao gồm: Vé máy bay, 3 đêm nghỉ tại khách sạn, hướng dẫn viên du lịch,...</li>
+            </ul>
+
+            <ul>
+                <li>Địa điểm khởi hành và trở về: Sân bay quốc tế John FK</li>
+                <li>Thời gian khởi hành: 3 giờ trước giờ bay</li>
+                <li>Phòng ngủ: 4 phòng</li>
+                <li>Phòng tắm: 6 phòng</li>
+                <li>Giá bao gồm: Vé máy bay, 3 đêm nghỉ tại khách sạn, hướng dẫn viên du lịch,...</li>
+            </ul>
+
+            <ul>
+                <li>Địa điểm khởi hành và trở về: Sân bay quốc tế John FK</li>
+                <li>Thời gian khởi hành: 3 giờ trước giờ bay</li>
+                <li>Phòng ngủ: 4 phòng</li>
+                <li>Phòng tắm: 6 phòng</li>
+                <li>Giá bao gồm: Vé máy bay, 3 đêm nghỉ tại khách sạn, hướng dẫn viên du lịch,...</li>
+            </ul>
+            <div class="quyDinh">
+                <h3>QUY ĐỊNH HỦY TOUR</h3>
+                <strong>Trường hợp hủy bỏ dịch vụ từ Travdana:</strong>
+                <br>
+                <p>Nếu Travdana không thực hiện được chuyến du lịch/dịch vụ, công ty phải báo ngay cho khách hàng
+                    biết và thanh toán lại cho khách hàng toàn bộ số tiền mà khách hàng đã đóng trong vòng 3 ngày kể từ
+                    lúc
+                    chính thức thông báo hủy chuyến đi/ dịch vụ du lịch bằng hình thức chuyển khoản.</p>
+                <br>
+                <strong>Trường hợp hủy bỏ dịch vụ từ Quý khách hàng:</strong>
+                <p>
+                    Trong trường hợp không thể tiếp tục sử dụng dịch vụ/ tour, sau khi hủy tour Quý khách phải thông báo
+                    cho
+                    Công ty bằng văn bản qua email. Quý khách phải chịu chi phí hủy tour/ dịch vụ theo quy định của
+                    Travdana
+                    và toàn bộ phí ngân hàng cho việc thanh toán trực tuyến.
+                </p>
+                <span>Phí hủy được quy định như sau:</span>
+                <ul>
+                    <li>Ngay sau khi đặt cọc hoặc thanh toán hoặc trước 15 ngày trước ngày khởi hành: hoàn trả toàn bộ
+                        tiền
+                        đã thanh toán.
+                    </li>
+                    <li>Hủy trong 15 ngày trước ngày khởi hành: phí hủy 30% đã thanh toán.</li>
+                    <li>Hủy trước 10 ngày trước ngày khởi hành: phí hủy 50% đã thanh toán</li>
+                    <li>Hủy trước 7 ngày trước ngày khởi hành: phí hủy 100% đã thanh toán</li>
+                    <li>Trường hợp quý khách không thanh toán trước 15 ngày sẽ được tính là hủy tour và mất toàn bộ tiền
+                        cọc.
+                    </li>
+                </ul>
+                <p>Việc huỷ bỏ chuyến đi phải được thông báo trực tiếp với Công ty hoặc qua email, tin nhắn và phải
+                    được Công ty xác nhận.</p>
+                <p>
+                    Đến ngày hẹn thanh toán 100% giá trị tour, nếu quý khách không thực hiện thanh toán đúng hạn và đúng
+                    số
+                    tiền, xem như quý khách tự ý hủy tour và mất hết số tiền đặt cọc giữ chỗ. </p>
+                <h3>LƯU Ý KHÁC</h3>
+                <ul>
+                    <li>Thứ tự các điểm tham quan trong chương trình có thể thay đổi cho phù hợp với tình hình thực tế.
+                        Nhưng không huỷ bỏ hoặc thay đổi mà không có sự thoả thuận với đoàn.
+                    </li>
+                    <li>Du khách có mặt tại điểm đón trước 15 phút. Du khách đến trễ khi xe đã khởi hành hoặc hủy tour
+                        không báo trước vui lòng chịu 100% phí hủy tour.
+                    </li>
+                    <li>Du khách mang theo CCCD, nên mang theo hành lý gọn nhẹ, không mang vali lớn. Trẻ em phải đi cùng
+                        cha mẹ hoặc người thân.
+                    </li>
+                    <li>Du khách tự quản lý tiền bạc tư trang trong quá trình tham quan du lịch.</li>
+                    <li>Chương trình tour được coi là biên bản ghi nhớ giữa khách hàng và Công ty. Những thắc mắc, khiếu
+                        nại sẽ dựa vào những quy định trong chương trình và phiếu thu để giải quyết.
+                    </li>
+                </ul>
+                <p style="font-style: italic">***Trong những trường hợp khách quan như: khủng bố, thiên tai, dịch bệnh… hoặc do có sự cố, có sự
+                    thay đổi lịch trình của các phương tiện vận chuyển công cộng như: máy bay, tàu hỏa… thì Công ty sẽ
+                    giữ quyền thay đổi lộ trình bất cứ lúc nào vì sự thuận tiện, an toàn cho khách hàng và sẽ không chịu
+                    trách nhiệm bồi thường những thiệt hại phát sinh***</p>
+            </div>
+        </div>
+
+        <div class="right-content"> <!--@{|/user/submitBooking?tourId=${tour.tourId}|}-->
+            <form th:action="@{|/user/submitBooking?tourId=${tour.tourId}|}" method="post" class="booking-box" th:object="${bookingRequest}">
+                <p><strong>Ngày khởi hành:</strong> [[${tour.startDate}]]</p>
+                <h4 style="color: #ff6348;">Nhập thông tin để đặt tour</h4>
+                <h4 style="color: red;">[[${message}]]</h4>
+                <br>
+                <label>Căn cước công dân:</label>
+                <input type="text" th:field="*{cccd}" class="form-control" placeholder="Căn Nhập CCCD của bạn" required>
+                <br>
+                <label >Số điện thoại:</label>
+                <div class="form-control input-disable" >[[${user.sdt}]]</div>
+                <br>
+                <label >Email:</label>
+                <div class="form-control input-disable" >[[${user.email}]]</div>
+                <br>
+
+                <label >Số lượng người lớn:</label>
+                <input type="number" th:field="*{adultCount}" class="form-control" required>
+                <br>
+
+                <label >Số lượng trẻ em:</label>
+                <input type="number" th:field="*{childCount}" class="form-control" required>
+                <br>
+
+                <!--                <label for="number-of-people">Số lượng người:</label>-->
+                <!--                <select id="number-of-people" class="form-control">-->
+                <!--                    <option value="1">1 người</option>-->
+                <!--                    <option value="2">2 người</option>-->
+                <!--                    <option value="3">3 người</option>-->
+                <!--                    <option value="4">4 người</option>-->
+                <!--                </select>-->
+                <!--                <br>-->
+                <!--                <label for="number-of-people">Tuổi:</label>-->
+                <!--                <select id="number-of-child" class="form-control">-->
+                <!--                    <option value="1"> 15 < Tuổi con nít</option>-->
+                <!--                    <option value="2"> > 15 Tuổi người lớn</option>-->
+                <!--                </select>-->
+
+                <br>
+                <button class="book-now">Tiến hành đặt chỗ</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<div th:insert="view/layout/footer.html:: footer"></div>
+
+</body>
+</html>

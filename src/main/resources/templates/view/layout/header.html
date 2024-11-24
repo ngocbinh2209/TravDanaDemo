@@ -1,0 +1,21 @@
+<header class="menu" id="menu-w">
+    <div class="heading">
+        <div class="logo"><img src="../images/logo.png" alt="logo"></div>
+        <nav id="menu">
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/diaDiem">Địa điểm tham quan</a></li>
+            <li><a href="/lienHe">Liên hệ</a></li>
+            <li><a href="/tourList">Đặt tour</a></li>
+            <li th:if="${session.userName == null}"><a href="/dangNhap">Đăng nhập</a></li>
+            <li th:if="${session.userName == null}"><a href="/dangKi">Đăng kí</a></li>
+        </nav>
+        <div class="homeRunFull" th:if="${session.userName != null}">
+            <div class="homeRun">
+                <a href="/ttKhachHang">
+                    <i class="fa-solid fa-user"></i>
+                    <span style="font-size: 16px">[[${session.fullname}]]</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>

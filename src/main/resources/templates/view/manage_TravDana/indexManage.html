@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travdana</title>
+    <link rel="stylesheet" href="manage_TravDana/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="manage_TravDana/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="manage_TravDana/assets/css/responsive.css">
+    <link rel="stylesheet" href="manage_TravDana/assets/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="manage_TravDana/assets/DataTables/Buttons-1.5.6/css/buttons.bootstrap4.min.css">
+</head>
+
+<body onload="time()">
+    <div id="main">
+        <!-- Begin: navbar -->
+        <div id="navbar">
+            <div class="navbar-header">
+                <li id="mobile-menu" class="navbar-menu"><a href="#"><i class="fa-solid fa-bars"></i></a></li>
+                <a class="navbar-qtv" href="">
+                    <i class="fa-solid fa-circle-user"></i>
+                    Quản Trị Viên (Admin)</a>
+            </div>
+            <div class="navbar-footer">
+                <li id="clock"></li>
+                <li class="navbar-regular"><a href="#"><i id="bell-icon" class="fa-regular fa-bell"></i></a></li>
+                <li><a href="#"><i class="fas fa-user"></i> Tài Khoản <i class="fa-solid fa-caret-down"></i></a>
+                    <ul class="subnav">
+                        <li><a href="#" onclick="loadContent('thongTinCaNhan')"><i class="subnav-icon fas fa-user-circle"></i><span>Thông Tin Cá Nhân</span></a></li>
+                        <li><a href="#" onclick="loadContent('doiMatKhau')"><i class="subnav-icon fas fa-key"></i><span>Đổi mật khẩu</span></a></li>
+                        <li><a href="/dangXuat"><i class="subnav-icon fas fa-sign-out-alt"></i><span>Đăng xuất</span></a></li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+        <!-- End: navbar -->
+
+        <!-- Begin: container -->
+        <div id="container">
+            <!-- Begin: siderBar -->
+            <div id="siderBar">
+                <div class="sidebar-content">
+                    <div class="spanQL span">
+                        <span>QUẢN LÝ TÀI KHOẢN</span>
+                    </div>
+                    <li><a href="#" onclick="loadContent('nhanVien')" class="nav-item"> <i class="fa-solid fa-users Bar_fa"></i> <span>Quản lý nhân viên</span> </a></li>
+                    <li><a href="#" onclick="loadContent('huongDanVien')" class="nav-item"><i class="fa-solid fa-user-tie Bar_fa"></i> <span>Quản lý hướng dẫn viên</span></a></li>
+                    <li><a href="#" onclick="loadContent('khachHang')" class="nav-item"><i class="fa-solid fa-user Bar_fa"></i> <span>Quản lý khách hàng</span></a></li>
+                    <div class="spanQL1 span">
+                        <span>QUẢN LÝ TOUR</span>
+                    </div>
+                    <li><a href="#" onclick="loadContent('themTourMoi')" class="nav-item"><i class="fa-solid fa-route Bar_fa"></i> <span>Thêm Tour Mới</span></a></li>
+                    <li><a href="#" onclick="loadContent('tatCaTour')" class="nav-item"><i class="fa-solid fa-list Bar_fa"></i> <span>Tất Cả Tour</span></a></li>
+                    <li><a href="#" onclick="loadContent('trangThaiThanhToan')" class="nav-item"><i class="fa-solid fas fa-wallet unpaid Bar_fa"></i><span>Trạng Thái Thanh Toán Tour</span></a></li>
+                    <div class="spanQL2 span">
+                        <span>BÁO CÁO THỐNG KÊ</span>
+                    </div>
+                    <li><a href="#" onclick="loadContent('doanhThu')" class="nav-item"> <i class="fa-solid fa-chart-line Bar_fa"></i> <span>Quản lý Doanh thu</span> </a></li>
+                    <li><a href="#" onclick="loadContent('thongKeTour')" class="nav-item"> <i class="fa-solid fa-chart-bar Bar_fa"></i><span>Thống kê Tour</span> </a></li>
+                    <div class="spanQL2 span">
+                        <span>QUẢN LÝ ĐÁNH GIÁ</span>
+                    </div>
+                    <li><a href="#" onclick="loadContent('danhGiaTour')" class="nav-item"><i class="fa-solid fa-star Bar_fa"></i><span>Xem Đánh Giá Tour</span></a></li>
+                    <div class="spanQL2 span">
+                        <span>QUẢN LÝ LỊCH TRÌNH TOUR</span>
+                    </div>
+                    <li><a href="#" onclick="loadContent('xemLichTrinhCongViec')" class="nav-item"><i class="fa-solid fa-list-check Bar_fa"></i> <span>Xem lịch trình công việc</span></a></li>
+                    <li><a href="#" onclick="loadContent('xemThongTinTour')" class="nav-item"><i class="fa-solid fa-map-marker-alt Bar_fa"></i> <span>Xem Thông Tin Tour</span></a></li>
+                    
+                </div>
+            </div>
+            
+            
+            <!-- End SiderBar -->
+
+            <!-- Begin: content -->
+            <div id="content">
+                <img class="content-img" src="manage_TravDana/assets/img/nenLoginAdmin.png  " alt="">
+            </div>
+
+            <div class="sideBarRight">
+                <h1>123</h1>
+            </div>
+
+            <!-- End content -->
+        </div>
+        <!-- End: container -->
+
+        <!-- Begin Footer -->
+        <div id="footer">
+            <div class="footer_all">
+                <div class="footer-list">
+                    <a href="https://www.facebook.com/people/TravDana/61566394485334/?mibextid=ZbWKwL"><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-solid fa-phone-volume"></i></a>
+                    <a href=""><i class="fa-brands fa-facebook-messenger"></i></a>
+                    <a href=""><i class="fa-brands fa-github"></i></a>
+                </div>
+                <p class="copyright">Bản quyền của <a href="">@TravlDana</a></p>
+            </div>
+            <!-- End Footer -->
+        </div>
+
+        <div id="backTop">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+        </div>
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="manage_TravDana/assets/js/jquery.min.js"></script>
+        <script src="manage_TravDana/assets/js/bootstrap.bundle.min.js"></script>
+
+
+        <!-- Datatables -->
+        <script src="manage_TravDana/assets/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
+        <script src="manage_TravDana/assets/DataTables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js"></script>
+
+        <script src="manage_TravDana/assets/DataTables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+        <script src="manage_TravDana/assets/DataTables/Buttons-1.5.6/js/buttons.bootstrap4.min.js"></script>
+        <script src="manage_TravDana/assets/DataTables/JSZip-2.5.0/jszip.min.js"></script>
+        <script src="manage_TravDana/assets/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+        <script src="manage_TravDana/assets/DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+        <script src="manage_TravDana/assets/DataTables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+        <script src="manage_TravDana/assets/DataTables/Buttons-1.5.6/js/buttons.print.min.js"></script>
+        <script src="manage_TravDana/assets/DataTables/Buttons-1.5.6/js/buttons.colVis.min.js"></script>
+
+
+        <script src="manage_TravDana/assets/js/main.js"></script>
+        <script src="manage_TravDana/assets/js/themTourMoi.js"></script>
+        <script src="manage_TravDana/assets/js/employee.js"></script>
+</body>
+
+</html>

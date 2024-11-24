@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đặt Tour</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../css/styleTour.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        header.menu {
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+        .container {
+            padding-top: 20px;
+        }
+
+        .tour-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tour-info h2 a {
+            color: #FF8A31;
+            text-decoration: none;
+        }
+
+        .tour-info ul {
+            padding-left: 0;
+        }
+
+        .tour-info ul li {
+            list-style: none;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #FF8A31;
+            box-shadow: 0 0 0 0.2rem rgba(255, 138, 49, 0.25);
+            outline: none;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-primary {
+            background-color: #FF8A31;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #e67e22;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-right p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group-text {
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/styleMenu.css">
+    <link rel="stylesheet" href="../css/animation.css">
+</head>
+
+<body>
+<div th:insert="view/layout/header.html:: header"> </div>
+
+    <div class="container my-5">
+        <div class="tour-info">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="//dulichviet.com.vn/images/bandidau/NOI-DIA/Da-Nang/tour-da-nang-mua-he-gia-tot-du-lich-viet.jpg"
+                        alt="Tour Image" class="img-fluid rounded" />
+                </div>
+                <div class="col-md-6">
+                    <h2>
+                        <a href="#">Du lịch Hè - Tour Đà Nẵng - Huế - Động Thiên Đường 4 ngày từ Sài Gòn 2024</a>
+                    </h2>
+                    <ul class="list-unstyled">
+                        <li><strong>Mã tour:</strong> 17282</li>
+                        <li><strong>Thời gian:</strong> 4 ngày</li>
+                        <li><strong>Giá:</strong> <span id="total-all">34,658,000</span> đ</li>
+                        <li><strong>Ngày khởi hành:</strong> 21/09/2024</li>
+                        <li><strong>Nơi khởi hành:</strong> Hồ Chí Minh</li>
+                        <li><strong>Số chỗ còn nhận:</strong> 10</li>
+                    </ul>
+                </div>
+            </div>
+
+            <form action="" id="booktour-form" method="post" class="mt-4">
+                <h3 class="mb-4"><i class="fa fa-info-circle"></i> Thông Tin Liên Hệ</h3>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="lname">HỌ TÊN *</label>
+                        <input type="text" name="Name" id="lname" class="form-control" placeholder="Họ tên" required />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="email">Email *</label>
+                        <input type="email" name="Mail" id="email" class="form-control" placeholder="Email" required />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="phone">Số điện thoại *</label>
+                        <input type="tel" name="Phone" id="phone" class="form-control" placeholder="Số điện thoại"
+                            required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Địa chỉ *</label>
+                    <textarea name="AddressShow" id="address" class="form-control" placeholder="Địa chỉ"
+                        required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="note">Ghi chú</label>
+                    <textarea name="Note" id="note" class="form-control" placeholder="Ghi chú"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="q-adult">Người lớn</label>
+                        <input type="number" name="QAdult" id="q-adult" class="form-control" value="1" min="1"
+                            max="20" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="q-child">Trẻ em (5 - 14 tuổi)</label>
+                        <input type="number" name="QChild" id="q-child" class="form-control" min="0" value="0" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="q-baby">Trẻ nhỏ (dưới 5 tuổi)</label>
+                        <input type="number" name="QBaby" id="q-baby" class="form-control" min="0" value="0" />
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="text-right">
+                    <p>Tổng giá trị: <span id="sumary">34,658,000</span> đ</p>
+                </div>
+
+                <div class="text-center">
+                    <p>Bằng việc tiếp tục, bạn chấp nhận đồng ý với chính sách/điều khoản như trên.</p>
+                    <button type="submit" class="btn btn-primary">HOÀN THÀNH</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="../js/index.js"></script>
+
+</html>

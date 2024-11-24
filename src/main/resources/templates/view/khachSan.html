@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+          integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Du lịch Việt Nam</title>
+    <link rel="stylesheet" href="css/khachSan.css">
+    <link rel="stylesheet" href="css/styleMenu.css">
+</head>
+
+<body>
+<div th:insert="view/layout/header.html:: header"
+     style=".item-list-hotel {
+            text-decoration: none;}"> </div>
+
+<main>
+    <div class="timkiem">
+        <h5>Trải nghiệm tiện nghi chuẩn 5* từ các tour du lịch đa dạng</h5>
+
+        <div class="search">
+            <form action="/searchHotel">
+                <select name="addDress-hotel">
+                    <option value="">Tất cả</option>
+                    <option value="">Sơn Trà</option>
+                    <option value="">Ngũ Hành Sơn</option>
+                    <option value="">Hải Châu</option>
+                    <option value="">Liên Chiểu</option>
+                    <option value="">Cẩm Lệ</option>
+                </select>
+                <input type="text" class="input-search" placeholder="Bạn đã tìm được địa điểm trải nghiệm chưa?">
+                <button class="btn-search">Tìm kiếm</button>
+            </form>
+        </div>
+    </div>
+    <div class="banner-hotel">
+        <h2>Đang có giá tốt nhất</h2>
+        <hr>
+        <img src="images/banner-khachSan.png" alt="">
+    </div>
+
+    <div class="sale-hotel">
+        <h2 id="tourSale">Tour du lịch ưu đãi</h2>
+        <hr>
+        <div class="quan-hotel">
+            <a th:href="@{|/tourList?pageSale=${0}&pageTour=${0}&sale=${5}#tourSale|}">Giảm giá 5%</a>
+            <a th:href="@{|/tourList?pageSale=${0}&pageTour=${0}&sale=${10}#tourSale|}">Giảm giá 10%</a>
+            <a th:href="@{|/tourList?pageSale=${0}&pageTour=${0}&sale=${15}#tourSale|}">Giảm giá 15%</a>
+            <a th:href="@{|/tourList?pageSale=${0}&pageTour=${0}&sale=${18}#tourSale|}">Giảm giá 18%</a>
+            <a th:href="@{|/tourList?pageSale=${0}&pageTour=${0}&sale=${20}#tourSale|}">Giảm giá 20%</a>
+            <a th:href="@{|/tourList?pageSale=${0}&pageTour=${0}&sale=${25}#tourSale|}">Giảm giá 25%</a>
+            <a th:href="@{|/tourList?pageSale=${0}&pageTour=${0}&sale=${30}#tourSale|}">Giảm giá 30%</a>
+            <a th:href="@{|/tourList?pageSale=${0}&pageTour=${0}#tourSale|}">Các ưu đãi khác</a>
+        </div>
+
+        <div class="list-hotel" >
+            <div th:replace="~{view/component/tourSale.html}"></div>
+        </div>
+
+        <div class="pagiration">
+            <ul>
+                <h1 th:if="${totalPagesSale==0}" style="text-align: center; margin: 20px">Không có tuor nào</h1>
+                <li th:if="${currentPageSale > 0}">
+                    <a th:href="@{|/tourList?pageSale=${currentPageSale - 1}&pageTour=${currentPageTour}#tourSale|}">Trang trước</a>
+                </li>
+
+                <li th:each="i : ${#numbers.sequence(0, totalPagesSale - 1)}">
+                    <a th:href="@{|/tourList?pageSale=${i}&pageTour=${currentPageTour}#tourSale|}"
+                       th:classappend="${i == currentPageSale} ? 'active'">[[${i+1}]]</a>
+                </li>
+
+                <li th:if="${currentPageSale < totalPagesSale - 1}">
+                    <a th:href="@{|/tourList?pageSale=${currentPageSale + 1}&pageTour=${currentPageTour}#tourSale|}">Trang sau</a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="sale-hotel">
+            <h2  id="tours">Tour du lịch khác</h2>
+            <hr>
+            <div class="quan-hotel">
+                <a href="">Sơn Trà</a>
+                <a href="">Hải Châu</a>
+                <a href="">Ngũ Hành Sơn</a>
+                <a href="">Liên Chiểu</a>
+                <a href="">Cẩm Lệ</a>
+                <a href="">Hội An</a>
+                <a href="">Biển Mỹ Khê</a>
+                <a href="">Công viên cá voi</a>
+                <a href="">Suối Mơ</a>
+            </div>
+            <div class="list-hotel">
+                <div th:replace="~{view/component/tour.html}"></div>
+            </div>
+        </div>
+        <div class="pagiration">
+            <ul>
+                <li th:if="${currentPageTour > 0}">
+                    <a th:href="@{|/tourList?pageSale=${currentPageSale}&pageTour=${currentPageTour - 1}#tours|}">Trang trước</a>
+                </li>
+
+                <li th:each="i : ${#numbers.sequence(0, totalPagesTour - 1)}">
+                    <a th:href="@{|/tourList?pageSale=${currentPageSale}&pageTour=${i}#tours|}"
+                       th:text="${i + 1}"
+                       th:classappend="${i == currentPageTour} ? 'active'"></a>
+                </li>
+
+                <li th:if="${currentPageTour < totalPagesTour - 1}">
+                    <a th:href="@{|/tourList?pageSale=${currentPageSale}&pageTour=${currentPageTour + 1}#tours|}">Trang sau</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</main>
+<div th:insert="view/layout/footer.html:: footer"> </div>
+</body>
+<script src="js/index.js"></script>
+
+</html>

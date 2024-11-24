@@ -1,0 +1,93 @@
+<div id="table_all">
+    <div id="breadcrumb">
+        <a href="#" class="bre_home">Home</a><span class="cur">/</span> <span id="current"></span> <span
+            class="cur">/</span> <span id="currentSection"> </span>
+    </div>
+    <div class="content_sta">
+        <div class="content_sta_um sta_1">
+            <div class="sta_one">
+                <div>
+                    <span>Tổng Số Tour</span>
+                </div>
+                <div>
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span th:text="${totalTours} + ' Tour'"></span>
+                </div>
+            </div>
+        </div>
+        <div class="content_sta_um sta_2">
+            <div class="sta_two">
+                <div>
+                    <span>Tour Đang Hoạt Động:</span>
+                </div>
+                <div>
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>100 Người</span>
+                </div>
+            </div>
+        </div>
+        <div class="content_sta_um sta_3">
+            <div class="sta_three">
+                <div>
+                    <span>Tour Đã Hoàn Thành:</span>
+                </div>
+                <div>
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>100 Người</span>
+                </div>
+            </div>
+        </div>
+        <div class="content_sta_um sta_4">
+            <div class="sta_four">
+                <div>
+                    <span>Tour Bị Hủy:</span>
+                </div>
+                <div>
+                    <i class="fa-solid fa-clipboard-user"></i>
+                    <span>100 Người</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <div class="content-all">
+            <div class="card">
+                <div class="card-body">
+<!--                    <div class="content-btn-all">-->
+<!--                        <button class="content-btn btn-more">Thêm Nhân Viên</button>-->
+<!--                    </div>-->
+                    <table id="table" class="table table-striped table-bordered" data-id="employeeTable" border="1">
+                        <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên Tour</th>
+                            <th>Ngày Bắt Đầu</th>
+                            <th>Số Ngày</th>
+                            <th>Giá</th>
+                            <th>Giá Trẻ Em</th>
+                            <th>Trạng Thái Tour</th>
+                            <th>Tối Thiểu(Người)</th>
+                            <th>Ngày Tạo</th>
+                            <th>Ngày Chỉnh Sửa</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each ="tour : ${Tours}">
+                            <td th:utext ="${tour.tourId}"></td>
+                            <td th:utext ="${tour.tourName}"></td>
+                            <td th:utext ="${tour.startDate}"></td>
+                            <td th:utext ="${tour.numberDay}"></td>
+                            <td th:utext ="${tour.price}"></td>
+                            <td th:utext ="${tour.childPrice}"></td>
+                            <td th:utext ="${tour.tourStatus}"></td>
+                            <td th:utext ="${tour.minCapacity}"></td>
+                            <td th:utext ="${tour.createdAt}"></td>
+                            <td th:utext ="${tour.updatedAt}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

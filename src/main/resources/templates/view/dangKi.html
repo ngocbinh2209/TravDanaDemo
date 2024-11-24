@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Du lịch Việt Nam</title>
+    <link rel="stylesheet" href="css/dangKi.css">
+    <link rel="stylesheet" href="css/styleMenu.css">
+</head>
+
+<body>
+
+    <header class="menu" id="menu-w">
+        <div class="heading">
+            <div class="logo"><img src="images/logo.png" alt="logo"></div>
+            <nav id="menu">
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="/diaDiem">Địa điểm tham quan</a></li>
+                <li><a href="/lienHe">Liên hệ</a></li>
+                <li><a href="/tourList">Đặt tour</a></li>
+            </nav>
+        </div>
+
+    </header>
+
+    <main class="map">
+        <div class="container">
+            <form class="register"  th:action="@{/register}" th:method="post" th:object="${user}">
+                <h3 style="color:red; text-align: center">[[${message}]]</h3>
+                <div class="container-form">
+
+                    <div class="row">
+                        <div class="col-left">
+                            <div>
+                                <p>Họ và tên</p>
+                                <input type="text" th:field="*{fullName}" placeholder="Nhập họ tên của bạn">
+                            </div>
+
+                            <div>
+                                <p>Tên đăng nhập</p>
+                                <input type="text" th:field="*{userName}" placeholder="Nhập tên tài khoản ">
+                            </div>
+
+                            <div>
+                                <p>Mật khẩu</p>
+                                <input type="password" th:field="*{password}" placeholder="Nhập mật khẩu của bạn">
+                            </div>
+
+                        </div>
+                        <div class="col-right">
+                            <div class="bag">
+                                <div>
+                                    <p>Ngày sinh</p>
+                                    <input type="date" th:field="*{birthday}">
+                                </div>
+                                <div class="gender">
+                                    <p>Giới tính</p>
+                                    <div class="gender-check">
+                                        <div>
+                                            <input type="radio" th:field="*{gender}" value="true"><label>Nam</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" th:field="*{gender}" value="false"><label>Nữ</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div>
+                                <p>Email</p>
+                                <input type="email" th:field="*{email}" placeholder="Nhập email của bạn ">
+                            </div>
+
+                            <div>
+                                <p>Số điện thoại</p>
+                                <input type="tel" th:field="*{phone}" placeholder="Nhập số điện thoại của bạn ">
+                            </div>
+
+<!--                            <div>-->
+<!--                                <p>Địa chỉ</p>-->
+<!--                                <input type="text" th:field="*{userName}" placeholder="Nhập địa chỉ của bạn ">-->
+<!--                            </div>-->
+
+                            
+
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="submit">
+                    <div >
+                        <button type="submit">ĐĂNG KÍ</button>
+                    </div>
+                    <hr>
+                    <div>
+                        <strong>Bạn đã có tài khoản? <a href="/dangNhap">Đăng nhập</a></strong>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </main>
+
+    <div th:insert="view/layout/footer.html:: footer"> </div>
+
+</body>
+
+</html>

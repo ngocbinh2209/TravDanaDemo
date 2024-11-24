@@ -1,0 +1,203 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 7px;
+
+    .register {
+        width: 100%;
+        margin: 20px auto;
+        margin-bottom: 100px;
+        /* border-top: 1px solid #a88484; */
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        /* border-bottom: 1px solid gray; */
+
+        .container-form {
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            .row {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                .col-left,
+                .col-right {
+                    width: 48%;
+
+                    .bag {
+                        margin: 0 auto;
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 30px;
+
+                        div {
+                            margin: 0 auto;
+                        }
+
+                        .gender {
+
+                            label {
+                                display: inline-flex;
+                                align-items: center;
+                                margin: 10px 5px;
+                                position: relative;
+                                right: 21px;
+
+                                input {
+                                    margin: 0 5px;
+                                }
+                            }
+
+                            .gender-check {
+                                margin: 0px;
+                                height: 54px;
+                                width: 100%;
+                                border: 1px solid #bfbdbd;
+                                border-width: 2px;
+
+                                div {
+                                    margin: 0 5px;
+
+
+                                    input {
+                                        margin: 18px;
+                                    }
+                                }
+
+
+                            }
+
+                        }
+
+                    }
+                }
+            }
+
+            div {
+                width: 83%;
+                margin: 12px auto;
+
+                p {
+                    font-size: 16px;
+                    font-weight: 600;
+                    font-family: "Poppins", sans-serif;
+                }
+
+                input {
+                    width: 100%;
+                    padding: 15px 20px;
+                    border: 2px solid #bfbdbd;
+                }
+
+                select {
+                    width: 100%;
+                    padding: 15px 20px;
+                    border: 2px solid #bfbdbd;
+                }
+
+            }
+
+            .cl2 {
+                display: flex;
+                justify-content: space-between;
+
+                div {
+                    width: 29%;
+                    margin: 20px 0px;
+                }
+
+
+
+                select,
+                input[type="date"] {
+                    padding: 15px;
+                    height: 47px;
+                }
+
+
+            }
+
+
+        }
+
+        .submit {
+            div {
+                width: 80%;
+                margin: 10px auto;
+            }
+
+            strong {
+                display: block;
+                width: 100%;
+                text-align: center;
+
+                a {
+                    color: #ff6348;
+                    font-size: 15px;
+                    font-family: "Poppins", sans-serif;
+                    width: 100%;
+                    font-weight: 500;
+                }
+
+            }
+
+            hr {
+                width: 80%;
+                margin: auto;
+                border-width: 2px;
+                margin-top: 70px;
+                color: black;
+                margin: 35px auto;
+            }
+
+            button {
+                width: 100%;
+                margin: auto;
+                padding: 11px;
+                border: none;
+                background-color: #ff6348;
+                color: white;
+                font-size: 14px;
+                font-weight: 600;
+                border-radius: 4px;
+            }
+        }
+
+    }
+}
+
+body {
+    background-image: url(/images/bannar-ss2.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.map {
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+.gender-check {
+    display: flex;
+    width: 100%;
+
+    div {
+        display: flex;
+
+        input {
+            width: 10px;
+        }
+    }
+}

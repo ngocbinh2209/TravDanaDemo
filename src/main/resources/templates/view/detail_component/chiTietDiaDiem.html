@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Du lịch Việt Nam</title>
+    <link rel="stylesheet" href="../css/chitietDiaDiem.css">
+    <link rel="stylesheet" href="../css/styleMenu.css">
+</head>
+<Style>
+    header.menu {
+        background-color: rgba(255, 255, 255, 0.652) !important;
+    }
+</Style>
+
+<body>
+<div th:insert="view/layout/header.html:: header"> </div>
+
+    <main>
+        <div class="infor-diaDiem">
+            <div class="infor-layout-img">
+                <img th:src="@{/images/{imgPath}(imgPath=${tour.images})}" alt="">
+            </div>
+            <div class="infor-layout">
+                <h3>[(${tour.tourName})]</h3>
+                <hr>
+                <h3>[(${tour.price})]<span> đ</span></h3>
+                <p>[(${tour.description})]<span>...</span>
+                </p>
+                <a th:href="@{|/user/bookingPage?tourId=${tour.tourId}|}"><button>Đặt Ngay</button></a>
+                <hr>
+                <div class="share">
+                    <label>Chia sẻ:</label>
+                    <span>
+                        <a href="" class="fb"><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-envelope"></i></a>
+                        <a href=""><i class="bi bi-twitter-x"></i></a>
+                        <a href=""><i class="bi bi-pinterest"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mota-and-comment">
+            <div class="pagiration">
+                <div class="btn-tab">MÔ TẢ</div>
+                <div class="btn-tab">BÌNH LUẬN</div>
+            </div>
+            <div class="mota" id="tab-1">
+                <p>[(${tour.description})]</p>
+                <div th:each="schedule : ${tour.schedules}">
+                    <p>[(${schedule.site.name})]</p>
+                    </div>
+            </div>
+            <div class="comment" id="tab-2">
+                <h3>
+                    Đánh giá
+                </h3>
+                <div class="bl">
+                    <div th:each="cmt : ${tour.tourReviews}">
+                        <div class="cmt" >
+                            <h4>[(${cmt.user.fullName})]</h4>
+                            <p>[(${cmt.comment})]</p>
+                        </div>
+                    </div>
+
+                </div>
+<!--                <div class="input-cmt">-->
+<!--                    <input type="text" name="binhLuan" id="" placeholder="Viết bình luận...">-->
+<!--                    <button>Bình luận</button>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-column">
+            <h1>Travlio</h1>
+            <p>Đối tác du lịch tuyệt vời của bạn</p><br>
+            <p>Người bạn đồng hành đáng tin cậy của mọi hành trình</p>
+        </div>
+        <div class="footer-column">
+            <h3>Thông tin liên hệ</h3>
+            <p><i class="bi bi-geo-alt-fill"></i> 640 Trưng Nữ Vương - Đà Nẵng</p>
+            <p><i class="bi bi-telephone-fill"></i> Phone: 0778 589 863</p>
+            <p><i class="bi bi-envelope-fill"></i> Email: travlio.quandh@gmail.com</p>
+            <p><i class="bi bi-envelope-fill"></i> Hỗ trợ: support.quandh@travlio.com</p>
+            <p><i class="bi bi-clock-fill"></i> Giờ làm việc: 9:00 - 17:00</p>
+        </div>
+        <div class="footer-column">
+            <h3>Mạng xã hội</h3>
+            <p><i class="bi bi-facebook"></i> Facebook: <a href="https://www.facebook.com/travlio">Duong Huu Quan</a>
+            </p>
+            <p><i class="bi bi-instagram"></i> Instagram: <a href="https://www.instagram.com/travlio">DaNangTravel</a>
+            </p>
+            <p><i class="bi bi-twitter"></i> Twitter: <a href="https://twitter.com/travlio">twitter.com/travlio</a></p>
+            <p><i class="bi bi-linkedin"></i> LinkedIn: <a
+                    href="https://www.linkedin.com/company/travlio">linkedin.com/quandh</a></p>
+            <p><i class="bi bi-youtube"></i> YouTube: <a
+                    href="https://www.youtube.com/travlio">youtube.com/@travlioDaNang</a></p>
+        </div>
+    </footer>
+    <p class="end-footer">© 2024 Travlio. Duong Huu Quan.</p>
+
+<script>
+    // Lấy các phần tử nút và nội dung
+    const btnMoTa = document.querySelector('.btn-tab:nth-child(1)');
+    const btnBinhLuan = document.querySelector('.btn-tab:nth-child(2)');
+    const tabMoTa = document.querySelector('.mota');
+    const tabComment = document.querySelector('.comment');
+
+    // Thiết lập sự kiện click cho nút MÔ TẢ
+    btnMoTa.addEventListener('click', function() {
+        tabMoTa.classList.add('active');
+        tabComment.classList.remove('active');
+        btnMoTa.classList.add('active-tab');
+        btnBinhLuan.classList.remove('active-tab');
+    });
+
+    // Thiết lập sự kiện click cho nút BÌNH LUẬN
+    btnBinhLuan.addEventListener('click', function() {
+        tabComment.classList.add('active');
+        tabMoTa.classList.remove('active');
+        btnBinhLuan.classList.add('active-tab');
+        btnMoTa.classList.remove('active-tab');
+    });
+
+    // Hiển thị tab MÔ TẢ mặc định khi tải trang
+    tabMoTa.classList.add('active');
+    btnMoTa.classList.add('active-tab');
+
+</script>
+</body>
+
+<script src="../js/index.js"></script>
+</html>
